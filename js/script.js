@@ -1,32 +1,41 @@
-let nombreProducto1 = "Bacha Artesanal"
-let precioProducto1 = 4850
-let stockProducto1 = 5
 
-let nombreProducto2 = "Jarrita Acqua"
-let precioProducto2 = 1200
-let stockProducto2 = 20
 
-let nombreProducto3 = "Jarrón Rubí"
-let precioProducto3 = 3300
-let stockProducto3 = 25
 
-let nombreProducto4 = "Cuenco Acqua"
-let precioProducto4 = 1300
-let stockProducto4 = 30
+function Producto (nombre, precio, stock) {
+  this.nombre = nombre;
+  this.precio = precio;
+  this.stock = stock || 0;
+}
 
-let nombreProducto5 = "Ensaladera Mar"
-let precioProducto5 = 2800
-let stockProducto5 = 20
+let producto1 = new Producto ("bacha artesanal", 4850, 5)
 
+let producto2 = new Producto ("jarrita acqua", 1200, 20)
+
+let producto3 = new Producto ("jarrón rubí", 3300, 25)
+
+let producto4 = new Producto ("cuenco acqua", 1300, 30)
+
+let producto5 = new Producto ("ensaladera mar", 2800, 20)
 
 let precioTotal = 0
 
-let primerIngreso = true
+let listaProductos = [producto1 , producto2, producto3, producto4, producto5] 
+
+let listaNombres = []
 
 
-alert ("Bienvenidos a Magia Blanca! Aquí podra adquirir los siguientes productos: \n - Bacha Artesanal  \n - Jarrita Acqua \n - Jarrón Rubí \n - Cuenco Acqua  \n - Ensaladera Mar \n - Salir")
+for (const producto of listaProductos){
+  listaNombres.push(producto.nombre) 
+}
+
+function saludo (){
+  alert ("Gracias por ingresar a Magia Blanca!")
+}
+
+saludo();
+
+alert ("Aquí podra adquirir los siguientes productos: \n - " + listaProductos.join("\n - "))
   
-
 
 let cantidadCompra = prompt ("Cuantos productos desea adquirir?")
 
@@ -37,61 +46,60 @@ if (productoCompra == "Salir"){
    break
 }
 
-if (productoCompra == "Bacha Artesanal"){
+if (productoCompra == Producto){
 
-  let cantidadProductoBacha = prompt("Ingrese que cantidad de " + nombreProducto1 + " desea comprar:")
-  if (cantidadProductoBacha <= stockProducto1){
-       precioTotal = precioTotal + (cantidadProductoBacha * precioProducto1)
+  let cantidadProducto = prompt("Ingrese que cantidad de " + Producto + " desea comprar:")
+  if (cantidadProducto <= Producto.stock){
+       precioTotal = precioTotal + (cantidadProducto * Producto.precio)
   }
   else {
-      alert("El stock actual de este producto es de: " + stockProducto1 + ". En caso de necesitar realizar un pedido mayorista por favor comunicarse a través de la página de contacto.")
+      alert("El stock actual de este producto es de: " + Producto.stock + ". En caso de necesitar realizar un pedido mayorista por favor comunicarse a través de la página de contacto.")
   }
 }
 
-else if (productoCompra == "Jarrita Acqua"){
+else if (productoCompra == Producto){
 
-  let cantidadProductoJarrita = prompt("Ingrese que cantidad de " + nombreProducto2 + " desea comprar:")
-  if (cantidadProductoJarrita <= stockProducto2){
-       precioTotal = precioTotal + (cantidadProductoJarrita * precioProducto2) 
+  let cantidadProducto = prompt("Ingrese que cantidad de " + Producto + " desea comprar:")
+  if (cantidadProducto <= Producto.stock){
+       precioTotal = precioTotal + (cantidadProducto * Producto.precio) 
   }
   else {
-    alert("El stock actual de este producto es de: " + stockProducto2 + ". En caso de necesitar realizar un pedido mayorista por favor comunicarse a través de la página de contacto.")
+    alert("El stock actual de este producto es de: " + Producto.stock + ". En caso de necesitar realizar un pedido mayorista por favor comunicarse a través de la página de contacto.")
 }
 }
 
-else if (productoCompra == "Jarrón Rubí"){
+/*else if (productoCompra == "jarrón rubí"){
 
-  let cantidadProductoJarrón = prompt("Ingrese que cantidad de " + nombreProducto3 + " desea comprar:")
-  if (cantidadProductoJarrón <= stockProducto3) {
-       precioTotal = precioTotal + (cantidadProductoJarrón * precioProducto3) 
+  let cantidadProductoJarrón = prompt("Ingrese que cantidad de " + producto3.nombre + " desea comprar:")
+  if (cantidadProductoJarrón <= producto3.stock) {
+       precioTotal = precioTotal + (cantidadProductoJarrón * producto3.precio) 
   }
   else {
-    alert("El stock actual de este producto es de: " + stockProducto3 + ". En caso de necesitar realizar un pedido mayorista por favor comunicarse a través de la página de contacto.")
+    alert("El stock actual de este producto es de: " + producto3.stock + ". En caso de necesitar realizar un pedido mayorista por favor comunicarse a través de la página de contacto.")
 } 
 }
 
-else if (productoCompra == "Cuenco Acqua"){
+else if (productoCompra == "cuenco acqua"){
 
-  let cantidadProductoCuenco = prompt("Ingrese que cantidad de " + nombreProducto4 + " desea comprar:")
-  if (cantidadProductoCuenco <= stockProducto4) {
-        precioTotal = precioTotal + (cantidadProductoCuenco * precioProducto4) 
+  let cantidadProductoCuenco = prompt("Ingrese que cantidad de " + producto4.nombre + " desea comprar:")
+  if (cantidadProductoCuenco <= producto4.stock) {
+        precioTotal = precioTotal + (cantidadProductoCuenco * producto4.precio) 
   }
   else {
-    alert("El stock actual de este producto es de: " + stockProducto4 + ". En caso de necesitar realizar un pedido mayorista por favor comunicarse a través de la página de contacto.")
+    alert("El stock actual de este producto es de: " + producto4.stock + ". En caso de necesitar realizar un pedido mayorista por favor comunicarse a través de la página de contacto.")
 }  
 }
 
-else if (productoCompra == "Ensaladera Mar"){
+else if (productoCompra == "ensaladera mar"){
 
-  let cantidadProductoEnsaladera = prompt("Ingrese que cantidad de " + nombreProducto5 + " desea comprar:")
-  if (cantidadProductoEnsaladera <= stockProducto5) {
-        precioTotal = precioTotal + (cantidadProductoEnsaladera * precioProducto5) 
+  let cantidadProductoEnsaladera = prompt("Ingrese que cantidad de " + producto5.nombre + " desea comprar:")
+  if (cantidadProductoEnsaladera <= producto5.stock) {
+        precioTotal = precioTotal + (cantidadProductoEnsaladera * producto5.precio) 
   }
   else {
-    alert("El stock actual de este producto es de: " + stockProducto5 + ". En caso de necesitar realizar un pedido mayorista por favor comunicarse a través de la página de contacto.")
+    alert("El stock actual de este producto es de: " + producto5.stock + ". En caso de necesitar realizar un pedido mayorista por favor comunicarse a través de la página de contacto.")
 }
-}
-
+}*/
 } 
 
 if (precioTotal != 0){
